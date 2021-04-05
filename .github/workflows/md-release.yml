@@ -1,0 +1,38 @@
+name: Minecraft Packets release
+on:
+  repository_dispatch:
+    types: [mcPackets-release]
+jobs:
+  update-mcpackets:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          submodules: true
+      - name: Update minecraft packets
+        run: 'cd minecraft-packets/ && git fetch --all --tags && git checkout ${{ github.event.client_payload.tag }}'
+      - name: Update package.json
+        run: >
+          sed -i -E 's/^  "version": "[0-9]+\.[0-9]+\.[0-9]+"/  "version": "${{ github.event.client_payload.tag }}"/g' package.json
+      - name: Update history.md
+        run: echo -e "## ${{ github.event.client_payload.tag }}\n* update mcPackets\n\n$(cat doc/history.md)" > history.md
+      - name: Create commits
+        run: |
+          git config user.name 'u9gbot'
+          git config user.email 'u9gbot@users.noreply.github.com'
+          git add minecraft-packets
+          git commit -m "Update Minecraft Packets"
+          git add package.json history.md
+          git commit -m "Release ${{ github.event.client_payload.tag }}"
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v3
+        with:
+          token: ${{ secrets.PAT_PASSWORD }}
+          committer: rom1504bot <rom1504bot@users.noreply.github.com>
+          author: rom1504bot <rom1504bot@users.noreply.github.com>
+          signoff: false
+          branch: release-${{ github.event.client_payload.tag }}
+          delete-branch: true
+          title: 'Release ${{ github.event.client_payload.tag }}'
+          body: |
+            A new version of minecraft-packets was released.
