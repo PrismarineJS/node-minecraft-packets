@@ -15,7 +15,7 @@ jobs:
         run: >
           sed -i -E 's/^  "version": "[0-9]+\.[0-9]+\.[0-9]+"/  "version": "${{ github.event.client_payload.tag }}"/g' package.json
       - name: Update history.md
-        run: echo -e "## ${{ github.event.client_payload.tag }}\n* update mcPackets\n\n$(cat doc/history.md)" > history.md
+        run: echo -e "## ${{ github.event.client_payload.tag }}\n* update mcPackets\n\n$(cat history.md)" > history.md
       - name: Create commits
         run: |
           git config user.name 'u9gbot'
