@@ -1,7 +1,7 @@
 {
-  "name": "prismarine-template",
+  "name": "minecraft-packets",
   "version": "1.0.0",
-  "description": "A template repository to make it easy to create new prismarine repo",
+  "description": "An easy way to query PrismarineJS/minecraft-packets",
   "main": "index.js",
   "scripts": {
     "test": "jest --verbose",
@@ -11,21 +11,22 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/PrismarineJS/prismarine-template.git"
+    "url": "git+https://github.com/PrismarineJS/node-minecraft-packets.git"
   },
   "keywords": [
     "prismarine",
-    "template"
+    "minecraft",
+    "packets"
   ],
   "author": "Romain Beaumont",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/PrismarineJS/prismarine-template/issues"
+    "url": "https://github.com/PrismarineJS/node-minecraft-packets/issues"
   },
-  "homepage": "https://github.com/PrismarineJS/prismarine-template#readme",
+  "homepage": "https://github.com/PrismarineJS/node-minecraft-packets#readme",
   "devDependencies": {
     "jest": "^26.1.0",
-    "prismarine-template": "file:.",
+    "minecraft-packets": "file:.",
     "standard": "^16.0.1"
   }
 }

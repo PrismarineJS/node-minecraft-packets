@@ -1,9 +1,25 @@
-if (typeof process !== 'undefined' && parseInt(process.versions.node.split('.')[0]) < 14) {
-  console.error('Your node version is currently', process.versions.node)
-  console.error('Please update it to a version >= 14.x.x from https://nodejs.org/')
-  process.exit(1)
+const fs = require('fs')
+const path = require('path')
+
+const DATA_PATH = './minecraft-packets/data'
+const gameTypes = fs.readdirSync(DATA_PATH)
+const data = {}
+
+for (const gameType of gameTypes) {
+  const versions = fs.readdirSync(path.join(DATA_PATH, gameType))
+  data[gameType] = {}
+  for (const version of versions) {
+    const sendTypes = fs.readdirSync(path.join(DATA_PATH, gameType, version))
+    data[gameType][version] = {}
+    for (const sendType of sendTypes) {
+      const packets = fs.readdirSync(path.join(DATA_PATH, gameType, version, sendType))
+      data[gameType][version][sendType] = {}
+      for (const packet of packets) {
+        const files = fs.readdirSync(path.join(DATA_PATH, gameType, version, sendType, packet))
+        data[gameType][version][sendType][packet] = files
+      }
+    }
+  }
 }
 
-module.exports.helloWorld = function () {
-  console.log('Hello world !')
-}
+module.exports = data
