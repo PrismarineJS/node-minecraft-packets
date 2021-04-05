@@ -4,8 +4,7 @@
 [![Discord](https://img.shields.io/badge/chat-on%20discord-brightgreen.svg)](https://discord.gg/GsEFRM8)
 [![Try it on gitpod](https://img.shields.io/badge/try-on%20gitpod-brightgreen.svg)](https://gitpod.io/#https://github.com/PrismarineJS/minecraft-packets)
 
-A template repository to make it easy to create new prismarine repo
-
+Minecraft packets in a github repo.
 ## Usage
 
 [See examples here](example.js)
