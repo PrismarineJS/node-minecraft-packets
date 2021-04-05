@@ -1,4 +1,4 @@
-# minecraft-packets
+# node-minecraft-packets
 [![NPM version](https://img.shields.io/npm/v/minecraft-packets.svg)](http://npmjs.com/package/minecraft-packets)
 [![Build Status](https://github.com/PrismarineJS/node-minecraft-packets/workflows/CI/badge.svg)](https://github.com/PrismarineJS/node-minecraft-packets/actions?query=workflow%3A%22CI%22)
 [![Discord](https://img.shields.io/badge/chat-on%20discord-brightgreen.svg)](https://discord.gg/GsEFRM8)
