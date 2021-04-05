@@ -28,8 +28,8 @@ jobs:
         uses: peter-evans/create-pull-request@v3
         with:
           token: ${{ secrets.PAT_PASSWORD }}
-          committer: u9gbot <u9gbot@users.noreply.github.com>
-          author: u9gbot <u9gbot@users.noreply.github.com>
+          committer: rom1504bot <rom1504bot@users.noreply.github.com>
+          author: rom1504bot <rom1504bot@users.noreply.github.com>
           signoff: false
           branch: release-${{ github.event.client_payload.tag }}
           delete-branch: true
