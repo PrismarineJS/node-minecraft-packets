@@ -12,6 +12,9 @@ for (const gameType of gameTypes) {
     const sendTypes = fs.readdirSync(path.join(DATA_PATH, gameType, version))
     data[gameType][version] = {}
     for (const sendType of sendTypes) {
+      if (sendType.endsWith('.md') || sendType === 'metadata') {
+        continue
+      }
       const packets = fs.readdirSync(path.join(DATA_PATH, gameType, version, sendType))
       data[gameType][version][sendType] = {}
       for (const packet of packets) {
