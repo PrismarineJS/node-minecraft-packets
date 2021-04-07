@@ -18,6 +18,9 @@ for (const gameType of gameTypes) {
         const files = fs.readdirSync(path.join(DATA_PATH, gameType, version, sendType, packet))
         data[gameType][version][sendType][packet] = [] // files
         for (const file of files) {
+          if (file.endsWith('.json') || file === 'metadata') {
+            continue
+          }
           let fileData = null
           let [index, type] = file.split('.')
           index-- // decrement so the arrays wont have an empty slot (nmpd starts dumping at packet 1)
