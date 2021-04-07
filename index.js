@@ -12,15 +12,15 @@ for (const gameType of gameTypes) {
     const sendTypes = fs.readdirSync(path.join(DATA_PATH, gameType, version))
     data[gameType][version] = {}
     for (const sendType of sendTypes) {
+      if (sendType.endsWith('.md') || sendType === 'metadata') {
+            continue
+      }
       const packets = fs.readdirSync(path.join(DATA_PATH, gameType, version, sendType))
       data[gameType][version][sendType] = {}
       for (const packet of packets) {
         const files = fs.readdirSync(path.join(DATA_PATH, gameType, version, sendType, packet))
         data[gameType][version][sendType][packet] = [] // files
         for (const file of files) {
-          if (file.endsWith('.md') || file === 'metadata') {
-            continue
-          }
           let fileData = null
           let [index, type] = file.split('.')
           index-- // decrement so the arrays wont have an empty slot (nmpd starts dumping at packet 1)
