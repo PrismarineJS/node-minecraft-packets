@@ -27,6 +27,7 @@
   "devDependencies": {
     "jest": "^26.1.0",
     "minecraft-packets": "file:.",
-    "standard": "^16.0.1"
+    "standard": "^16.0.1",
+    "minecraft-protocol": "^1.24.2"
   }
 }
