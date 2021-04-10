@@ -1,3 +1,6 @@
+## 1.3.0
+* update mcPackets
+
 ## 1.2.0
 * update mcPackets
 
