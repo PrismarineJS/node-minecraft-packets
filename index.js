@@ -27,9 +27,9 @@ for (const gameType of gameTypes) {
             data[gameType][version][sendType][packet][index] = {}
           }
           if (type === 'json') {
-            Object.defineProperty(data[gameType][version][sendType][packet][index], type, { get () { return require(path.join(DATA_PATH, gameType, version, sendType, packet, file)) } })
+            Object.defineProperty(data[gameType][version][sendType][packet][index], type, { enumerable: true, get () { return require(path.join(DATA_PATH, gameType, version, sendType, packet, file)) } })
           } else if (type === 'raw') {
-            Object.defineProperty(data[gameType][version][sendType][packet][index], type, { get () { return fs.readFileSync(path.join(DATA_PATH, gameType, version, sendType, packet, file)) } })
+            Object.defineProperty(data[gameType][version][sendType][packet][index], type, { enumerable: true, get () { return fs.readFileSync(path.join(DATA_PATH, gameType, version, sendType, packet, file)) } })
           }
         }
       }
