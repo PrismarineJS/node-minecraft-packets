@@ -23,14 +23,14 @@ for (const gameType of gameTypes) {
         for (const file of files) {
           let [index, type] = file.split('.')
           index-- // decrement so the arrays wont have an empty slot (nmpd starts dumping at packet 1)
-          let entry = data[gameType][version][sendType][packet][index]
-          if (!entry) {
-            entry = {}
+          const entry = data[gameType][version][sendType][packet]
+          if (!entry[index]) {
+            entry[index] = {}
           }
           if (type === 'json') {
-            Object.defineProperty(entry, type, { enumerable: true, get () { return require(path.join(DATA_PATH, gameType, version, sendType, packet, file)) } })
+            Object.defineProperty(entry[index], type, { enumerable: true, get () { return require(path.join(DATA_PATH, gameType, version, sendType, packet, file)) } })
           } else if (type === 'raw') {
-            Object.defineProperty(entry, type, { enumerable: true, get () { return fs.readFileSync(path.join(DATA_PATH, gameType, version, sendType, packet, file)) } })
+            Object.defineProperty(entry[index], type, { enumerable: true, get () { return fs.readFileSync(path.join(DATA_PATH, gameType, version, sendType, packet, file)) } })
           }
         }
       }
