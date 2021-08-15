@@ -1,6 +1,6 @@
 {
   "name": "minecraft-packets",
-  "version": "1.3.0",
+  "version": "1.4.0",
   "description": "An easy way to query PrismarineJS/minecraft-packets",
   "main": "index.js",
   "scripts": {
