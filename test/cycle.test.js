@@ -22,6 +22,10 @@ Object.entries(mcPackets.pc).forEach(([ver, data]) => {
     const parsed = convertBufferToObject(buffer).data
     const parsedBuffer = convertObjectToBuffer(parsed)
     const areEq = buffer.equals(parsedBuffer)
+    if (!areEq) {
+      console.log('buffer', buffer.toString('hex'))
+      console.log('buffer', parsedBuffer.toString('hex'))
+    }
     assert.strictEqual(areEq, true, `Error when testing ${+packetIx + 1} ${packetName} packet`)
   }
   describe(`Test version ${ver}`, () => {
